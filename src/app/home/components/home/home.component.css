@@ -1,0 +1,14 @@
+.container-fluid {
+  margin-top: 10px;
+  margin-left: 2px;
+  margin-right: 15px;
+  width: auto;
+}
+
+.card {
+  border: none;
+}
+
+.img-fluid {
+  height: 100px;
+}

@@ -1,0 +1,29 @@
+<div class="aria-label">
+  <h1>
+    Actual Weather of {{ actualWeather.name }}
+  </h1>
+
+  <hr style="color: #1c313a;" size="5" />
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row d-flex">
+        <div class="col-md-4">
+          <div class="card mt-4 card-xl">
+            <div class="card-body">
+              <h3 class="card-title">{{ actualWeather.name }}</h3>
+              <img [src]="'http://openweathermap.org/img/w/' + actualWeather.icon + '.png'" class="img-fluid">
+              <p class="card-text"><strong>Main:</strong> {{ actualWeather.weatherDetails.main }}</p>
+              <p class="card-text"><strong>Description:</strong> {{ actualWeather.weatherDetails.description }}</p>
+              <p class="card-text"><strong>Temperature:</strong> {{ actualWeather.temp }} &deg;C</p>
+              <p class="card-text"><strong>Feels like:</strong> {{ actualWeather.feels_like }} &deg;C</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
