@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private weatherService: WeatherService){ }
 
+  pronostic: any;
   //le paso en la misma variable los datos que quiero pintar en la pantalla de home
   actualWeather: any = {
     name: '',
@@ -30,7 +31,23 @@ export class HomeComponent implements OnInit {
           this.actualWeather.weatherDetails = data.weather[0];
         }
       );
+    this.getPronostic();
   }
 
+  //obtener el pronostico del clima
+  getPronostic() {
+    this.weatherService.getPronosticWeather()
+      .subscribe(
+        (data: any) => {
+          this.pronostic = data;
+        }
+      );
+  }
+
+  //método para mostrar los grados en Celsius
+  kelvinToCelsius(temp: number): string {
+    const celsius = temp - 273.15;
+    return `${celsius.toFixed(1)} °C`;
+  }
 
 }
