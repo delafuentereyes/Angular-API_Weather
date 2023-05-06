@@ -10,6 +10,12 @@ export class HomeComponent implements OnInit {
 
   constructor(private weatherService: WeatherService){ }
 
+  /*lat!: number;
+  lon!: number;
+  weather!: any;
+  forecast!: any;*/
+
+
   pronostic: any;
   //le paso en la misma variable los datos que quiero pintar en la pantalla de home
   actualWeather: any = {
@@ -18,10 +24,10 @@ export class HomeComponent implements OnInit {
     feels_like: '',
     icon: '',
     weatherDetails: {}
-  };
+  }
 
   ngOnInit(): void {
-    this.weatherService.getActualWeather()
+    this.weatherService.getCurrentWeather()
       .subscribe(
         (data: any) => {
           this.actualWeather.name = data.name;
@@ -31,8 +37,38 @@ export class HomeComponent implements OnInit {
           this.actualWeather.weatherDetails = data.weather[0];
         }
       );
+    //this.getWeatherLocation();
+    //this.getWeatherForecast();
     this.getPronostic();
   }
+
+  /*obtener el clima actual según la ubicación
+  getWeatherLocation(){
+    if("geolocation" in navigator){
+      navigator.geolocation.watchPosition((success)=>{
+        this.lat = success.coords.latitude;
+        this.lon = success.coords.longitude;
+
+        this.weatherService.getWeatherByCoords(this.lat, this.lon).subscribe(data=>{
+          this.weather = data;
+        })
+      })
+    }
+  }*/
+
+  /*getWeatherForecast() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.watchPosition((success) => {
+        this.lat = success.coords.latitude;
+        this.lon = success.coords.longitude;
+
+        this.weatherService.getForecastByCoords(this.lat, this.lon).subscribe(data => {
+          this.forecast = data;
+          console.log(data);
+        });
+      });
+    }
+  }*/
 
   //obtener el pronostico del clima
   getPronostic() {
@@ -40,6 +76,7 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.pronostic = data;
+          console.log(data);
         }
       );
   }
@@ -49,5 +86,4 @@ export class HomeComponent implements OnInit {
     const celsius = temp - 273.15;
     return `${celsius.toFixed(1)} °C`;
   }
-
 }

@@ -17,6 +17,10 @@
   width: 950px;
 }
 
+.img{
+  width: 50px;
+}
+
 .card {
   border: none;
   background-color: rgba(119, 255, 210, 0.438);
@@ -29,7 +33,7 @@
 }
 
 .card-title{
-  margin-left: 170px;
+  margin-left: 150px;
 }
 
 .card-pronostic {
