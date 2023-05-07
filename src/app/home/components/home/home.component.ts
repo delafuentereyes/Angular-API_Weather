@@ -42,10 +42,6 @@ export class HomeComponent implements OnInit {
     this.getPronostic();
   }
 
-  setUnits(units: string) {
-    this.units = units;
-  }
-
   /*obtener el clima actual según la ubicación
   getWeatherLocation(){
     if("geolocation" in navigator){
@@ -73,6 +69,10 @@ export class HomeComponent implements OnInit {
       });
     }
   }*/
+
+  setUnits(units: string) {
+    this.units = units;
+  }
 
   //obtener el pronostico del clima
   getPronostic() {
