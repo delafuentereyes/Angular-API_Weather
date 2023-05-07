@@ -15,25 +15,25 @@
           <img [src]="'http://openweathermap.org/img/w/' + actualWeather.icon + '.png'" class="img-fluid">
           <p class="card-text"> <strong> Main: </strong> {{ actualWeather.weatherDetails.main }} </p>
           <p class="card-text"> <strong> Description: </strong> {{ actualWeather.weatherDetails.description }} </p>
-          <p class="card-text"> <strong> Temperature: </strong> {{ actualWeather.temp }} &deg;C </p>
+          <p class="card-text">  <strong> Temperature: </strong> {{ showTemperature(actualWeather.temp) }} </p>
           <p class="card-text"> <strong> Feels like: </strong> {{ actualWeather.feels_like }} &deg;C </p>
+          <button type="button" class="btn btn-primary" (click)="setUnits('metric')"> °C </button>
+          <button type="button" id="btn-farenheit" class="btn btn-primary" (click)="setUnits('imperial')"> °F </button>
         </div>
       </div>
     </div>
 
     <div class="col-md-6" id="card-pronostic">
-      <h1 style="text-align: center;">
-        Pronostic weather for {{pronostic.city.name}}
-      </h1>
+      <h1 style="text-align: center;">Pronostic weather for {{pronostic.city.name}}</h1>
       <hr>
       <div class="row d-flex">
         <div class="col-md-4" *ngFor="let forecast of pronostic.list">
-          <div class="card-pronostic mt-4">
+          <div class="card-pronostic mt-4 card-lg">
             <div class="card-body-pronostic">
               <img [src]="'http://openweathermap.org/img/w/' + forecast.weather[0].icon + '.png'" alt="Weather Icon" class="img">
-              <p class="card-text-pronostic"> {{ forecast.dt_txt }} </p>
-              <p class="card-text-pronostic"> {{ kelvinToCelsius(forecast.main.temp) }} </p>
-              <p class="card-text-pronostic"> {{ forecast.weather[0].description }} </p>
+              <p class="card-text-pronostic">{{ forecast.dt_txt }}</p>
+              <p class="card-text-pronostic">{{ showTemperature(actualWeather.temp) }}</p>
+              <p class="card-text-pronostic">{{ forecast.weather[0].description }}</p>
             </div>
           </div>
         </div>

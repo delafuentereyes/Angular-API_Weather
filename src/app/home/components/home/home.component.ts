@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   weather!: any;
   forecast!: any;*/
 
-
+  units: string = 'metric';
   pronostic: any;
   //le paso en la misma variable los datos que quiero pintar en la pantalla de home
   actualWeather: any = {
@@ -40,6 +40,10 @@ export class HomeComponent implements OnInit {
     //this.getWeatherLocation();
     //this.getWeatherForecast();
     this.getPronostic();
+  }
+
+  setUnits(units: string) {
+    this.units = units;
   }
 
   /*obtener el clima actual según la ubicación
@@ -81,9 +85,23 @@ export class HomeComponent implements OnInit {
       );
   }
 
-  //método para mostrar los grados en Celsius
+  //pasar de celsius a farenheit y viceversa
+  showTemperature(temp: number): string {
+    if (this.units === 'metric') {
+      return temp.toFixed(1) + ' °C';
+    } else if (this.units === 'imperial') {
+      const tempF = (temp * 9 / 5) + 32;
+      return tempF.toFixed(1) + ' °F';
+    } else {
+      return '';
+    }
+  }
+
+  /*
+  método para mostrar los grados en Celsius
   kelvinToCelsius(temp: number): string {
     const celsius = temp - 273.15;
     return `${celsius.toFixed(1)} °C`;
   }
+  */
 }
