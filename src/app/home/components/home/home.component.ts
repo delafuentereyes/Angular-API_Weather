@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   units: string = 'metric';
   pronostic: any;
-  //le paso en la misma variable los datos que quiero pintar en la pantalla de home
+  //hago un mapeado en la variable para traer lo que quiero de la API
   actualWeather: any = {
     name: '',
     temp: '',
